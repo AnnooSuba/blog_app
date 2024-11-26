@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.content }}</p>
+    <p>Author: {{ post.author }}</p>
+    <p>Created At: {{ post.created_at }}</p>
+    <p>Updated At: {{ post.updated_at }}</p>
+    {% if post.file_upload %}
+        <p><a href="{{ post.file_upload.url }}" download>Download File</a></p>
+    {% endif %}
+    <a href="{% url 'edit_post' post.id %}">Edit</a>
+    <a href="{% url 'delete_post' post.id %}">Delete</a>
+{% endblock %}
